@@ -2,6 +2,8 @@ from collections import Counter
 from math import *
 import matplotlib.pyplot as plt
 from scipy.stats import norm
+import statistics
+import numpy as np
 
 
 
@@ -42,9 +44,19 @@ class JMPEstadisticas:
 
     def calculo (self, peso):
         valor=norm.cdf(peso, self.calculoMediaAritmetica(), self.calculoVarianzaDesviacionTipica()[1])
-        print(valor)
-    #def visualizacion(self):
-        #Grafica distribucion normal y linea de donde nos lo ha pedido
+        return valor
+    def visualizacion(self,peso):
+        caracteristica = self.caracteristica.sort_values()
+        caracteristica = caracteristica.reset_index(drop=True)
+        resultado=self.calculo(peso)
+        x_axis = np.arange(caracteristica[0], caracteristica[len(caracteristica)-1], 0.01)
+        mean = statistics.mean(x_axis)
+        sd = statistics.stdev(x_axis)
+
+        plt.plot(x_axis, norm.pdf(x_axis, mean, sd))
+        plt.axvline(peso, color='red', linestyle='dashed', linewidth=1)
+        plt.text(peso-5,0.05,"La probabilidad es: "+str(resultado),fontsize=14)
+        plt.show()
 
 
     def analisisCaracteristica(self):
@@ -77,7 +89,7 @@ class JMPEstadisticas:
 
         print("\n-- PROBABILIDADES --")
         print("Introduzca el número para calcular la probabilidad de que una naranja escogida al azar pese menos que ese número")
-        peso=input()
+        peso=13
         print(f"Vamos a calcular la probabilidad de que una naranja pese menos que {peso}")
-        self.calculo(peso)
-        #self.visualizacion()
+        print(self.calculo(peso))
+        self.visualizacion(peso)
