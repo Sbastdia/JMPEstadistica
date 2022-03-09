@@ -8,3 +8,12 @@ data = np.loadtxt(raw_data, delimiter=";",skiprows=1)
 data=pnd.DataFrame({'Pesos':data})
 stats = jmp.JMPEstadisticas(data["Pesos"])
 stats.analisisCaracteristica()
+
+
+#import csv
+#filename = "datos.csv"
+#with open(filename) as f:
+    #header= next(f)
+
+    #for h in header:
+        #print (h, end='')
