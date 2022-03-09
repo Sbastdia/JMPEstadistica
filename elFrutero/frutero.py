@@ -1,8 +1,12 @@
 import pandas as pnd
 import numpy as np
 import JMPEstadisticas as jmp
+import os
+
+current_dir = os.path.dirname(os.path.realpath(__file__))
+filename = os.path.join(current_dir, 'datos.csv')
 print("Hola")
-filename = '/home/alberto/Documentos/UAX/Curso 2/Cuatrimestre 2/Programación Paralela/JMPEstadistica/elFrutero/datos.csv'
+#filename = 'datos.csv'
 raw_data = open(filename)
 data = np.loadtxt(raw_data, delimiter=";",skiprows=1)
 data=pnd.DataFrame({'Pesos':data})
