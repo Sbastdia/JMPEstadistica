@@ -1,4 +1,3 @@
-from collections import Counter
 from math import *
 import matplotlib.pyplot as plt
 from scipy.stats import norm
@@ -90,7 +89,7 @@ class JMPEstadisticas:
 
         print("\n-- PROBABILIDADES --")
         print("Introduzca el número para calcular la probabilidad de que una naranja escogida al azar pese menos que ese número")
-        peso=input()
+        peso=int(input())
         print(f"Vamos a calcular la probabilidad de que una naranja pese menos que {peso}")
         print(self.calculo(peso))
         self.visualizacion(peso)
