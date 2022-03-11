@@ -90,6 +90,6 @@ class JMPEstadisticas:
         print("\n-- PROBABILIDADES --")
         print("Introduzca el número para calcular la probabilidad de que una naranja escogida al azar pese menos que ese número")
         peso=int(input())
-        print(f"Vamos a calcular la probabilidad de que una naranja pese menos que {peso}")
+        print(f"La probabilidad de que una naranja pese menos que {peso} es de:")
         print(self.calculo(peso))
         self.visualizacion(peso)
